@@ -1,0 +1,75 @@
+@bubble-color: hsla(0, 0%, 21%, 1);
+@default-timing-function: cubic-bezier(0.34,1.61,0.7,1);
+@default-transition-duration: 300ms;
+
+.transform(@functions) {
+  -webkit-transform: @functions;
+          transform: @functions;
+}
+
+.transition(@properties: all;
+            @duration: @default-transition-duration;
+            @timing: @default-timing-function) {
+  -webkit-transition: @properties @duration @timing;
+          transition: @properties @duration @timing;
+}
+
+.transform-origin(@origin) {
+  -webkit-transform-origin: @origin;
+          transform-origin: @origin;
+}
+
+.half-gradient(@end-color) {
+  @start-color: transparent;
+  background-image: -webkit-linear-gradient(-135deg, @start-color 50%, @end-color 50%);
+  background-image: linear-gradient(-135deg, @start-color 50%, @end-color 50%);
+}
+
+#markan-dialog {
+  background: @bubble-color;
+  position: absolute;
+  z-index: 9001;
+  opacity: 0;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+  .transform(scale(0));
+  .transform-origin(bottom center);
+  .transition(~"opacity, -webkit-transform");
+  .transition(~"opacity, transform");
+
+  &.active {
+    opacity: 1;
+    .transform(scale(1));
+  }
+
+  &.point-up {
+    .transform-origin(top center);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    box-shadow: -3px 3px 3px rgba(0,0,0,0.16);
+    left: 50%;
+    bottom: -7px;
+    margin-left: -7px;
+    width: 14px;
+    height: 14px;
+    .half-gradient(@bubble-color);
+    .transform(rotate(-45deg));
+  }
+
+  &.point-up:after {
+    top: -7px;
+    .transform(rotate(135deg));
+  }
+
+  &.left-arr:after {
+    .transform(skewY(-45deg));
+  }
+
+  &.right-arr:after {
+    .transform(rotateY(180deg) skewY(-45deg));
+  }
+}
