@@ -1,0 +1,38 @@
+<!doctype html>
+<meta charset="utf-8">
+<link href="markan.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Gafata' rel='stylesheet' type='text/css'>
+<style>
+  body {
+    font-family: Gafata, sans-serif;
+  }
+</style>
+
+<p>Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+<p class="selectme">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+<p class="selectme2">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+<p class="selectme3">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+<p class="selectme4">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+
+<script src="jquery-2.1.0.min.js"></script>
+<script src="markan.js"></script>
+<script>
+  $('p.selectme').markan({
+    dialog: 'TEST'
+  });
+
+  $('p.selectme2').markan({
+    dialog: 'TEST',
+    placement: 'bottom'
+  });
+
+  $('p.selectme3').markan({
+    dialog: 'TEST',
+    alignment: 'right'
+  });
+
+  $('p.selectme4').markan({
+    dialog: 'TEST',
+    alignment: 'left'
+  });
+</script>
