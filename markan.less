@@ -1,4 +1,5 @@
-@bubble-color: hsla(0, 0%, 21%, 1);
+@bubble-bg-color: hsla(0, 0%, 21%, 1);
+@bubble-fg-color: #eee;
 @default-timing-function: cubic-bezier(0.34,1.61,0.7,1);
 @default-transition-duration: 300ms;
 
@@ -26,7 +27,8 @@
 }
 
 #markan-dialog {
-  background: @bubble-color;
+  color: @bubble-fg-color;
+  background: @bubble-bg-color;
   position: absolute;
   z-index: 9001;
   opacity: 0;
@@ -56,7 +58,7 @@
     margin-left: -7px;
     width: 14px;
     height: 14px;
-    .half-gradient(@bubble-color);
+    .half-gradient(@bubble-bg-color);
     .transform(rotate(-45deg));
   }
 
