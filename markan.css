@@ -52,3 +52,11 @@
   -webkit-transform: rotateY(180deg) skewY(-45deg);
   transform: rotateY(180deg) skewY(-45deg);
 }
+#markan-dialog.point-up.left-arr:after {
+  -webkit-transform: rotateX(180deg) skewY(-45deg);
+  transform: rotateX(180deg) skewY(-45deg);
+}
+#markan-dialog.point-up.right-arr:after {
+  -webkit-transform: rotate(180deg) skewY(-45deg);
+  transform: rotate(180deg) skewY(-45deg);
+}
