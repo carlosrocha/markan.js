@@ -6,33 +6,65 @@
   body {
     font-family: Gafata, sans-serif;
   }
+  ::-moz-selection {
+    background: hsl(100, 87%, 84%);
+  }
+  ::selection {
+    background: hsl(100, 87%, 84%);
+  }
 </style>
 
 <p>Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
-<p class="selectme">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+<p class="selectme1">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
 <p class="selectme2">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
 <p class="selectme3">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
 <p class="selectme4">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+<p class="selectme5">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+<p class="selectme6">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+
+<footer>
+  <p>Maintained by Carlos Rocha</p>
+</footer>
 
 <script src="jquery-2.1.0.min.js"></script>
 <script src="markan.js"></script>
 <script>
   $('p.selectme').markan({
+    dialog: function(range) {
+      var selected = encodeURIComponent(range.cloneContents().textContent),
+          url = 'https://twitter.com/intent/tweet?text=' + selected;
+      return $('<a>', { href: url }).text('Tweet this');
+    }
+  });
+
+  $('p.selectme1').markan({
     dialog: 'TEST'
   });
 
   $('p.selectme2').markan({
     dialog: 'TEST',
-    placement: 'bottom'
+    alignment: 'right'
   });
 
   $('p.selectme3').markan({
     dialog: 'TEST',
-    alignment: 'right'
+    alignment: 'left'
   });
 
   $('p.selectme4').markan({
     dialog: 'TEST',
+    placement: 'bottom'
+  });
+
+  $('p.selectme5').markan({
+    dialog: 'TEST',
+    placement: 'bottom',
+    alignment: 'right'
+  });
+
+  $('p.selectme6').markan({
+    dialog: 'TEST',
+    placement: 'bottom',
     alignment: 'left'
   });
 </script>
