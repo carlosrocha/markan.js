@@ -111,7 +111,7 @@
 
     options = $.extend({}, settings, options);
     elements.push(this);
-    return this.each(function(i, val) {
+    return this.each(function() {
       $(this).data('markan', options)
              .on('markan.selected', placeBubble);
     });
