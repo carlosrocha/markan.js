@@ -1,0 +1,38 @@
+body {
+  font-family: Lato, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1 { font-size: 50px; }
+p { font-size: 23px; }
+pre { padding: 0; }
+code {
+  font-family: "PT Mono", Menlo, Monaco, monospace;
+  font-size: 13px;
+}
+::-moz-selection {
+  background: hsl(100, 87%, 84%);
+}
+::selection {
+  background: hsl(100, 87%, 84%);
+}
+.download {
+  text-align: center;
+}
+.footer p {
+  text-align: center;
+  font-size: 18px;
+}
+.btn-primary {
+  background-color: hsl(100, 90%, 35%);
+  border-color: hsl(100, 90%, 45%);
+}
+.btn-primary:hover {
+  background-color: hsl(100, 90%, 25%);
+  border-color: hsl(100, 90%, 35%);
+}
+#markan-dialog {
+  font-size: 18px;
+}
+#markan-dialog a {
+  color: #eee;
+}

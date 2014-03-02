@@ -1,35 +1,116 @@
 <!doctype html>
 <meta charset="utf-8">
-<link href="markan.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Gafata' rel='stylesheet' type='text/css'>
-<style>
-  body {
-    font-family: Gafata, sans-serif;
-  }
-  ::-moz-selection {
-    background: hsl(100, 87%, 84%);
-  }
-  ::selection {
-    background: hsl(100, 87%, 84%);
-  }
-</style>
+<title>Markan.js</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Carlos Rocha">
+<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/atelier-seaside.light.min.css">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="markan.css">
+<link rel="stylesheet" href="page.css">
 
-<p>Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
-<p class="selectme1">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
-<p class="selectme2">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
-<p class="selectme3">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
-<p class="selectme4">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
-<p class="selectme5">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
-<p class="selectme6">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+<div class="container">
+  <div class="page-header">
+    <h1>Markan.js</h1>
+  </div>
 
-<footer>
-  <p>Maintained by Carlos Rocha</p>
-</footer>
+  <p>Markan.js is a jQuery plugin to add a dialog on text selection. Inspired by Medium and RapGenius.</p>
 
-<script src="jquery-2.1.0.min.js"></script>
+  <p class="download">
+    <a class="btn btn-primary btn-lg" href="https://github.com/carlosrocha/markan.js">Download on GitHub</a>
+  </p>
+
+
+  <h2>Usage</h2>
+
+  <pre><code>$('p.tweet-this').markan({
+  dialog: function(range) {
+    var selected = encodeURIComponent(range.cloneContents().textContent),
+        url = 'https://twitter.com/intent/tweet?text=' + selected;
+    return $('&lt;a&gt;', { href: url }).text('Tweet this');
+  }
+});</code></pre>
+
+  <p class="tweet-this">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+
+  <h2>Positioning examples</h2>
+
+  <p class="selectme1">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+  <p class="selectme2">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+  <p class="selectme3">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+  <p class="selectme4">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+  <p class="selectme5">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+  <p class="selectme6">Lorem <em>ipsum</em>, dolor <strong>sit amet</strong></p>
+
+  <h2 id="options">Options</h2>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>type</th>
+        <th>default</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dialog</td>
+        <td>string | element | function</td>
+        <td>''</td>
+        <td>The element to be placed inside the dialog, the function takes the <a href="https://developer.mozilla.org/en-US/docs/Web/API/range">range</a> as argument and returns the element to be appended.</td>
+      </tr>
+      <tr>
+        <td>placement</td>
+        <td>string</td>
+        <td>top</td>
+        <td>Placement of the dialog: top | bottom</td>
+      </tr>
+      <tr>
+        <td>alignment</td>
+        <td>string</td>
+        <td>center</td>
+        <td>Alignment of the dialog: left | center | right</td>
+      </tr>
+      <tr>
+        <td>offsetY</td>
+        <td>number</td>
+        <td>10</td>
+        <td>Offset of the dialog in y</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="events">Events</h2>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Event name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>markan.selected</td>
+        <td>This event is fired when a selection is made.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer class="footer">
+    <p>Built and maintained by Carlos Rocha</p>
+  </footer>
+
+</div>
+
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="markan.js"></script>
 <script>
-  $('p.selectme').markan({
+  hljs.initHighlightingOnLoad();
+
+  $('p.tweet-this').markan({
+    offsetY: 12,
     dialog: function(range) {
       var selected = encodeURIComponent(range.cloneContents().textContent),
           url = 'https://twitter.com/intent/tweet?text=' + selected;
@@ -38,31 +119,37 @@
   });
 
   $('p.selectme1').markan({
+    offsetY: 12,
     dialog: 'TEST'
   });
 
   $('p.selectme2').markan({
+    offsetY: 12,
     dialog: 'TEST',
     alignment: 'right'
   });
 
   $('p.selectme3').markan({
+    offsetY: 12,
     dialog: 'TEST',
     alignment: 'left'
   });
 
   $('p.selectme4').markan({
+    offsetY: 12,
     dialog: 'TEST',
     placement: 'bottom'
   });
 
   $('p.selectme5').markan({
+    offsetY: 12,
     dialog: 'TEST',
     placement: 'bottom',
     alignment: 'right'
   });
 
   $('p.selectme6').markan({
+    offsetY: 12,
     dialog: 'TEST',
     placement: 'bottom',
     alignment: 'left'
